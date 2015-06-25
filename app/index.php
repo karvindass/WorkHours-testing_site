@@ -51,7 +51,7 @@
                     
                 </paper-menu>
             </div>
-            <paper-header-panel main mode="waterfall-tall">
+            <paper-header-panel main mode="seam">
                 <paper-toolbar id="mainToolbar">
 
                     <!-- Main toolbar -->
@@ -71,9 +71,10 @@
                     <iron-pages attr-for-selected="data-route" selected="{{route}}">
 
                         <section data-route="home">
+                            <div class="col-6">
                             <paper-material elevation="1">
                                 <?php
-                                echo "<h1>Practice Text</h1>";
+                                echo "<blockquote><h1>Practice Text</h1></blockquote>";
                                 include '/scripts/connectdb.php';
                                 ?>
                             </paper-material>
@@ -83,12 +84,21 @@
                                 $result = mysqli_query($link, $query);
                                 if (!$result)
                                 {
-                                    $error = 'Error fetching jokes:' . mysqli_error($link);
+                                    $error = 'Error fetching projects:' . mysqli_error($link);
                                     echo $error;
                                 }
                                 
+                                while ($row = mysqli_fetch_array($result))
+                                {
+                                    $projects[] = array('title' => $row['title'], 'startdate' => $row['startdate'], 'id' => $row['id'],
+                                            'client' => $row['clientid']);
+                                }
+                                
+                                include 'scripts/printprojects.html.php';
+                                
                                 ?>
                             </paper-material>
+                            </div>
                         </section>
 
                         <section data-route="addproj">

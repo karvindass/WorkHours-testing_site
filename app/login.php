@@ -13,11 +13,11 @@
 	<link rel="stylesheet" href="styles/main.css">
 	
 </head>
-<body>
+<body style="background-color: #558C89">
 <template is="dom-bind" id="app">
 	<br><br><br><br><br><br><br><br>
 	<div class="col-3" style="margin-left:auto; margin-right:auto">
-	<paper-material elevation="1">
+	<paper-material elevation="5">
 	<div style="padding: 40px;">
 	<h1>Login to WorkHours</h1>
 	<paper-input label="Username"></paper-input>
