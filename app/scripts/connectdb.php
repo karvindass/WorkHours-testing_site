@@ -9,12 +9,12 @@ if(!$link)
 }
 
 
-if (!mysqli_set_charset($link, 'utf-8'))
-{
-	$output = 'Unable to set database connection encoding.';
-	include 'output.html.php';
-	//exit();
-}
+//if (!mysqli_set_charset($link, 'utf-8'))
+//{
+//	$output = 'Unable to set database connection encoding.';
+//	include 'output.html.php';
+//	//exit();
+//}
 
 if (!mysqli_select_db($link,'workhours1'))
 {
@@ -24,5 +24,5 @@ if (!mysqli_select_db($link,'workhours1'))
 }
 
 $output = 'Database connection established.';
-include 'output.html.php';
+// include 'output.html.php';
 ?>
