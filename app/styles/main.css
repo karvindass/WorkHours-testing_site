@@ -29,3 +29,14 @@ color: #333;
 .col-10 {width: 83.33%;}
 .col-11 {width: 91.66%;}
 .col-12 {width: 100%;}
+
+.left {
+    margin-right: auto;
+}
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+.right {
+    margin-left: auto;
+}

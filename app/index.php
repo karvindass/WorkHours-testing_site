@@ -40,7 +40,7 @@
                     
                     <a data-route="search" > <!-- href="/contact" -->
                         <iron-icon icon="search"></iron-icon>
-                        <span>Search and Find</span>
+                        <span>Search</span>
                     </a>
                     
                     <a data-route="stats" > <!-- href="/contact" -->
@@ -59,7 +59,7 @@
                     <span class="flex"></span>
 
                     <!-- Toolbar icons -->
-                    <paper-icon-button icon="refresh"></paper-icon-button>
+                    <paper-icon-button onClick="history.go(0)" icon="refresh"></paper-icon-button>
                     <paper-icon-button icon="search"></paper-icon-button>
 
                     <!-- Name of application -->
@@ -69,9 +69,8 @@
                 <!-- Main content -->
                 <div class="content">
                     <iron-pages attr-for-selected="data-route" selected="{{route}}">
-
                         <section data-route="home">
-                            <div class="col-6">
+                            <div class="col-6 center">
                             <paper-material elevation="1">
                                 <?php
                                 echo "<blockquote><h1>Practice Text</h1></blockquote>";
@@ -101,9 +100,24 @@
                             </div>
                         </section>
 
-                        <section data-route="addproj">
+                        <section data-route="addproj" class="col-6 center">
                             <paper-material elevation="1">
+                                <blockquote>
                                 <h2 class="paper-font-display2">Practice Test-Page 2</h2>
+                                </blockquote>
+                            </paper-material>
+                            <paper-material>
+                                <blockquote>    
+                                    <div class="paper-font-title">Enter the information and submit below</div>
+                                    <paper-input label="Title"></paper-input>
+                                    <paper-input label="Starting Date"></paper-input>
+                                    <paper-input label="Projected Working Hours"></paper-input>
+                                    <br>
+                                    <paper-button raised>
+                                        Add New Project
+                                        <paper-icon icon="arrow-forward"></paper-icon>
+                                    </paper-button>
+                                </blockquote>
                             </paper-material>
                         </section>
 
