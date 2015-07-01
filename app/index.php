@@ -131,8 +131,9 @@
                                     <form action="?" method="post">
                                     <?php
                                     include 'scripts/connectdb.php';
+                                    //Setting up adding new entry to database
                                     ?>
-                                    <div class="paper-font-title">Enter the information and submit below</div>
+                                    <div class="paper-font-title">Enter the information and submit</div>
                                     <paper-input label="Project Title" name="title" id="title">
                                     </paper-input>
                                     <paper-input label="Client ID" name="clientid" id="clientid"></paper-input>
@@ -156,12 +157,11 @@
                                         }
                                     </style>
                                     <paper-button raised>
-                                        <button type="submit">
-                                        Add New Project
-                                        <paper-icon icon="arrow-forward"></paper-icon>
+                                        <button type="submit">Add New Project<paper-icon icon="arrow-forward"></paper-icon>
                                         </button>   
                                     </paper-button>
                                     </form>
+                                    <?php include 'scripts/insertProject.php'; ?>
                                 </blockquote>
                             </paper-material>
                         </section>
