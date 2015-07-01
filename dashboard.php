@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<!--Redundant and unused file-->
+
 <body>
 
 <?php 
