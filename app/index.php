@@ -128,21 +128,40 @@
                             </paper-material>
                             <paper-material>
                                 <blockquote>
+                                    <form action="?" method="post">
                                     <?php
                                     include 'scripts/connectdb.php';
                                     ?>
                                     <div class="paper-font-title">Enter the information and submit below</div>
-                                    <paper-input label="Project Title" id="title">
-                                        <?php htmlout($title); ?>
+                                    <paper-input label="Project Title" name="title" id="title">
                                     </paper-input>
-                                    <paper-input label="Client ID" id="clientid"></paper-input>
-                                    <paper-input label="Starting Date" id="startdate"></paper-input>
-                                    <paper-input label="Projected Working Hours" id="workhours"></paper-input>
+                                    <paper-input label="Client ID" name="clientid" id="clientid"></paper-input>
+                                    <paper-input label="Starting Date" name="startdate" id="startdate"></paper-input>
+                                    <paper-input label="Projected Working Hours" name="workhours" id="workhours"></paper-input>
                                     <br>
+                                    <style shim-shadowdom>
+                                        paper-button {
+                                            padding: 0;
+                                        }
+                                        paper-button::shadow .button-content {
+                                            padding: 0;
+                                        }
+                                        paper-button button {
+                                            padding: 1em;
+                                            background-color: transparent;
+                                            border-color: transparent;
+                                        }
+                                        paper-button button::-moz-focus-inner {
+                                            border: 0;
+                                        }
+                                    </style>
                                     <paper-button raised>
+                                        <button type="submit">
                                         Add New Project
                                         <paper-icon icon="arrow-forward"></paper-icon>
+                                        </button>   
                                     </paper-button>
+                                    </form>
                                 </blockquote>
                             </paper-material>
                         </section>
