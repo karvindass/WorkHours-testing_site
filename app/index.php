@@ -97,6 +97,26 @@
                                 
                                 ?>
                             </paper-material>
+                                <paper-material>
+                                <?php 
+                                $query = 'SELECT * FROM projects LIMIT 5';
+                                $result2 = mysqli_query($link,$query);
+                                
+                                if (!$result2)
+                                {
+                                    $error = 'Error fetching projects:' . mysqli_error($link);
+                                    echo $error;
+                                }
+                                
+                                while ($row = mysqli_fetch_array($result2))
+                                {
+                                    $projectstab[] = array('title' => $row['title'], 'enddate' => $row['enddate'], 'id' => $row['id'],
+                                            'client' => $row['clientid']);
+                                }
+                                
+                                include 'scripts/projectTableOut.html.php';
+                                ?>    
+                                </paper-material>
                             </div>
                         </section>
 
@@ -107,11 +127,17 @@
                                 </blockquote>
                             </paper-material>
                             <paper-material>
-                                <blockquote>    
+                                <blockquote>
+                                    <?php
+                                    include 'scripts/connectdb.php';
+                                    ?>
                                     <div class="paper-font-title">Enter the information and submit below</div>
-                                    <paper-input label="Title"></paper-input>
-                                    <paper-input label="Starting Date"></paper-input>
-                                    <paper-input label="Projected Working Hours"></paper-input>
+                                    <paper-input label="Project Title" id="title">
+                                        <?php htmlout($title); ?>
+                                    </paper-input>
+                                    <paper-input label="Client ID" id="clientid"></paper-input>
+                                    <paper-input label="Starting Date" id="startdate"></paper-input>
+                                    <paper-input label="Projected Working Hours" id="workhours"></paper-input>
                                     <br>
                                     <paper-button raised>
                                         Add New Project
