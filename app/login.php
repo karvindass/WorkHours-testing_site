@@ -20,8 +20,8 @@
 	<paper-material elevation="5">
 	<div style="padding: 40px;">
 	<h1>Login to WorkHours</h1>
-	<paper-input label="Username"></paper-input>
-	<paper-input label="Password" type="password"></paper-input>
+	<paper-input label="Username" id="username"></paper-input>
+	<paper-input label="Password" type="password" id="password"></paper-input>
 	<br>
 	<paper-button raised>Login</paper-button>
 	<br>
