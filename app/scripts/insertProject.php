@@ -2,19 +2,19 @@
 
 include 'connectdb.php';
 
-if (isset($_POST['submit']))
-{
-$title = $_POST['title'];
-$clientid = $_POST['clientid'];
-$start = $_POST['startdate'];
-$sumhours = $_POST['workhours'];
+echo '<br>Not submit: ' . (!isset($_POST['submit']));
+if (true) {
+    echo '<br>';
+    $title = $_POST['title'];
+    $clientid = $_POST['clientid'];
+    $start = $_POST['startdate'];
+    $sumhours = $_POST['workhours'];
 
-$posting = 'INSERT INTO projects (title,clientid,sumwh)
-        VALUES ($title,$clientid,$sumhours)';
-myqsli_query($link, $sql);
-
+    $posting = "INSERT INTO projects (title,clientid,sumwh)
+        VALUES ('" . $title . "','" . $clientid . "'," . $sumhours . ")";
+    echo $posting;
+    mysqli_query($link, $posting);
 }
 
 //include toast icon that appears at the bottom of the screen
-
 ?>

@@ -37,18 +37,18 @@
                         <!-- think about whether full or outline for icon -->
                         <span>Add Project</span>
                     </a>
-                    
+
                     <a data-route="search" > <!-- href="/contact" -->
                         <iron-icon icon="search"></iron-icon>
                         <span>Search</span>
                     </a>
-                    
+
                     <a data-route="stats" > <!-- href="/contact" -->
                         <iron-icon icon="trending-up"></iron-icon>
                         <span>Statistics</span>
                     </a>
 
-                    
+
                 </paper-menu>
             </div>
             <paper-header-panel main mode="seam">
@@ -71,51 +71,46 @@
                     <iron-pages attr-for-selected="data-route" selected="{{route}}">
                         <section data-route="home">
                             <div class="col-6 center">
-                            <paper-material elevation="1">
-                                <?php
-                                echo "<blockquote><h1>Practice Text</h1></blockquote>";
-                                include '/scripts/connectdb.php';
-                                ?>
-                            </paper-material>
-                            <paper-material elevation="1">
-                                <?php
-                                $query = 'SELECT * FROM projects';
-                                $result = mysqli_query($link, $query);
-                                if (!$result)
-                                {
-                                    $error = 'Error fetching projects:' . mysqli_error($link);
-                                    echo $error;
-                                }
-                                
-                                while ($row = mysqli_fetch_array($result))
-                                {
-                                    $projects[] = array('title' => $row['title'], 'startdate' => $row['startdate'], 'id' => $row['id'],
+                                <paper-material elevation="1">
+                                    <?php
+                                    echo "<blockquote><h1>Lorem ipsum dolor sit amet.</h1></blockquote>";
+                                    include '/scripts/connectdb.php';
+                                    ?>
+                                </paper-material>
+                                <paper-material elevation="1">
+                                    <?php
+                                    $query = 'SELECT * FROM projects';
+                                    $result = mysqli_query($link, $query);
+                                    if (!$result) {
+                                        $error = 'Error fetching projects:' . mysqli_error($link);
+                                        echo $error;
+                                    }
+
+                                    while ($row = mysqli_fetch_array($result)) {
+                                        $projects[] = array('title' => $row['title'], 'startdate' => $row['startdate'], 'id' => $row['id'],
                                             'client' => $row['clientid']);
-                                }
-                                
-                                include 'scripts/printprojects.html.php';
-                                
-                                ?>
-                            </paper-material>
+                                    }
+
+                                    include 'scripts/printprojects.html.php';
+                                    ?>
+                                </paper-material>
                                 <paper-material>
-                                <?php 
-                                $query = 'SELECT * FROM projects LIMIT 5';
-                                $result2 = mysqli_query($link,$query);
-                                
-                                if (!$result2)
-                                {
-                                    $error = 'Error fetching projects:' . mysqli_error($link);
-                                    echo $error;
-                                }
-                                
-                                while ($row = mysqli_fetch_array($result2))
-                                {
-                                    $projectstab[] = array('title' => $row['title'], 'enddate' => $row['enddate'], 'id' => $row['id'],
+                                    <?php
+                                    $query = 'SELECT * FROM projects LIMIT 5';
+                                    $result2 = mysqli_query($link, $query);
+
+                                    if (!$result2) {
+                                        $error = 'Error fetching projects:' . mysqli_error($link);
+                                        echo $error;
+                                    }
+
+                                    while ($row = mysqli_fetch_array($result2)) {
+                                        $projectstab[] = array('title' => $row['title'], 'enddate' => $row['enddate'], 'id' => $row['id'],
                                             'client' => $row['clientid']);
-                                }
-                                
-                                include 'scripts/projectTableOut.html.php';
-                                ?>    
+                                    }
+
+                                    include 'scripts/projectTableOut.html.php';
+                                    ?>    
                                 </paper-material>
                             </div>
                         </section>
@@ -123,43 +118,39 @@
                         <section data-route="addproj" class="col-6 center">
                             <paper-material elevation="1">
                                 <blockquote>
-                                <h2 class="paper-font-display2">Practice Test-Page 2</h2>
+                                    <h2 class="paper-font-display2">Lorem ipsum dolor sit amet.</h2>
                                 </blockquote>
                             </paper-material>
                             <paper-material>
                                 <blockquote>
-                                    <form action="?" method="post">
-                                    <?php
-                                    include 'scripts/connectdb.php';
-                                    //Setting up adding new entry to database
-                                    ?>
-                                    <div class="paper-font-title">Enter the information and submit</div>
-                                    <paper-input label="Project Title" name="title" id="title">
-                                    </paper-input>
-                                    <paper-input label="Client ID" name="clientid" id="clientid"></paper-input>
-                                    <paper-input label="Starting Date" name="startdate" id="startdate"></paper-input>
-                                    <paper-input label="Projected Working Hours" name="workhours" id="workhours"></paper-input>
-                                    <br>
-                                    <style shim-shadowdom>
-                                        paper-button {
-                                            padding: 0;
+                                    <form action="" method="POST" id="insert-project-form">
+                                        <div class="paper-font-title">Enter the information and submit</div>
+                                        <paper-input label="Project Title" name="title" id="title">
+                                        </paper-input>
+                                        <paper-input label="Client ID" name="clientid" id="clientid"></paper-input>
+                                        <paper-input label="Starting Date (YYYY-MM-DD)" name="startdate" id="startdate"></paper-input>
+                                        <paper-input label="Projected Working Hours" name="workhours" id="workhours"></paper-input>
+                                        <br>
+                                        <style>
+                                            button {
+                                                -webkit-appearance: none;
+                                                -moz-appearance: none;
+                                                appearance:none;
+                                                border: 0;
+                                            }
+                                        </style>
+                                        <!--                                        <button type="submit">-->
+                                        <paper-button raised onclick="submitForm()" style="float: right;">Add Project</paper-button>
+                                        <script>
+                                        function submitForm() {
+                                            document.getElementById('insert-project-form').submit();
                                         }
-                                        paper-button::shadow .button-content {
-                                            padding: 0;
-                                        }
-                                        paper-button button {
-                                            padding: 1em;
-                                            background-color: transparent;
-                                            border-color: transparent;
-                                        }
-                                        paper-button button::-moz-focus-inner {
-                                            border: 0;
-                                        }
-                                    </style>
-                                    <paper-button raised>
-                                        <button type="submit">Add New Project<paper-icon icon="arrow-forward"></paper-icon>
-                                        </button>   
-                                    </paper-button>
+                                        </script>
+                                        <!--</button>-->
+<!--                                        <paper-button raised>
+                                            <button type="submit" name="submit">Add New Project<paper-icon icon="arrow-forward"></paper-icon>
+                                            </button>   
+                                        </paper-button>-->
                                     </form>
                                     <?php include 'scripts/insertProject.php'; ?>
                                 </blockquote>
@@ -172,7 +163,7 @@
                                 <p>A little bit for testing</p>
                             </paper-material>
                         </section>
-                        
+
                         <section data-route="stats">
                             <paper-material elevation="1">
                                 <h2 class="paper-font-display2">Practice Test-Page 4</h2>
