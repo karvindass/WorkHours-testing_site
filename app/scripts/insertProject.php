@@ -2,6 +2,7 @@
 
 include 'connectdb.php';
 
+echo isset($link);
 echo '<br>Not submit: ' . (!isset($_POST['submit']));
 if (true) {
     echo '<br>';

@@ -13,6 +13,9 @@
         <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
         <link rel="import" href="elements/elements.html">
 
+        <!-- Importing features for Masonry Layout (jQuery, jQuery Masonry) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        
 
     </head>
     <body> <!--unresolved class="fullbleed vertical layout" -->
@@ -123,29 +126,21 @@
                             </paper-material>
                             <paper-material>
                                 <blockquote>
-                                    <form action="" method="POST" id="insert-project-form">
-                                        <div class="paper-font-title">Enter the information and submit</div>
-                                        <paper-input label="Project Title" name="title" id="title">
-                                        </paper-input>
+                                    <form is="iron-form" method="post" id="insert-project-form" action="/form/handler">
+                                        
+                                        <paper-input label="Project Title" name="title" id="title"></paper-input>
                                         <paper-input label="Client ID" name="clientid" id="clientid"></paper-input>
                                         <paper-input label="Starting Date (YYYY-MM-DD)" name="startdate" id="startdate"></paper-input>
                                         <paper-input label="Projected Working Hours" name="workhours" id="workhours"></paper-input>
                                         <br>
-                                        <style>
-                                            button {
-                                                -webkit-appearance: none;
-                                                -moz-appearance: none;
-                                                appearance:none;
-                                                border: 0;
-                                            }
-                                        </style>
-                                        <!--                                        <button type="submit">-->
-                                        <paper-button raised onclick="submitForm()" style="float: right;">Add Project</paper-button>
+                                        <!-- <button type="submit">-->
                                         <script>
                                         function submitForm() {
                                             document.getElementById('insert-project-form').submit();
                                         }
                                         </script>
+                                        <paper-button raised onclick="submitForm()">Submit</paper-button>
+                                        
                                         <!--</button>-->
 <!--                                        <paper-button raised>
                                             <button type="submit" name="submit">Add New Project<paper-icon icon="arrow-forward"></paper-icon>
